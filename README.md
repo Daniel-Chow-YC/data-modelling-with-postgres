@@ -14,10 +14,27 @@ This database will now allow for easier querying of data and analysis.
 **etl.py** extracts, transforms and loads data from the json files to populate the database. The json song data is processed to populate the **songs** and **artists** tables and the user activity log data is used to populatre the **time** and **users** tables. A SELECT query is then used to collect the song and artist id from the **songs** and **artists** tables respectively, and is used in conjunction with the user activity log data to populate the **songplays** table.    
 </p>
 
-## Running the Python Scripts
-<p>To run the python scripts run the following commands in the terminal: <br>
+## How to run the Project
+
+#### Create and run Postgresql container
+<p>
+In the terminal, run the following commands to create and run the Postgresql container which we will later be connecting to: <br>
+**docker build -t postgres-student-image .** <br>
+**docker run -d --name postgres-student-container -p 5432:5432 postgres-student-image**
+</p>
+
+#### Running the Python Scripts
+<p>Now you just need to run the following commands in the terminal: <br>
 **python3 create_tables.py** <br>
 **python3 etl.py** <br>
 </p>
 
-<p> Alternatively, you can run the 2 cells in **run_scripts.ipyb** </p>
+<p> Alternatively, you can run the 2 cells in **run_scripts.ipynb** </p>
+
+#### Stop and close down container
+<p>
+To stop and close down the Postgresql container: <br>
+**docker stop postgres-student-container** <br>
+**docker rm postgres-student-container** <br>
+**docker rmi postgres-student-image** <br>
+</p>
